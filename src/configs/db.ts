@@ -30,7 +30,7 @@ export const connectDB = async () => {
 
 		// Optional: Listen for disconnection
 		mongoose.connection.on('disconnected', () => {
-			console.log('⚠️	MongoDB is Disconnected!');
+			console.warn('⚠️	MongoDB is Disconnected!');
 		});
 	} catch (error) {
 		if (error instanceof Error) {
@@ -38,7 +38,7 @@ export const connectDB = async () => {
 		} else {
 			console.error('⚠️	Unknown Error Occurred!');
 		}
-		console.log('⚠️	MongoDB is Not Connected!');
+		console.warn('⚠️	MongoDB is Not Connected!');
 		process.exit(1);
 	}
 };
