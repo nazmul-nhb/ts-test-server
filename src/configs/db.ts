@@ -34,7 +34,7 @@ export const connectDB = async () => {
 		});
 	} catch (error) {
 		if (error instanceof Error) {
-			console.error('❌	MongoDB Connection Failed:', error.message);
+			console.error('❌	MongoDB Connection Failed: ', error.message);
 		} else {
 			console.error('⚠️	Unknown Error Occurred!');
 		}

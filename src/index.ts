@@ -2,10 +2,10 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
+import serveFavicon from 'serve-favicon';
 import { connectDB } from './configs/db';
 import { IErrorObject } from './types/interfaces';
 import exampleRoutes from './routes/exampleRoutes';
-import serveFavicon from 'serve-favicon';
 
 dotenv.config();
 
