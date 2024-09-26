@@ -41,7 +41,7 @@ app.use((_req: Request, _res: Response, next: NextFunction) => {
 // Final/Global Error Handler
 app.use(
 	(error: IErrorObject, _req: Request, res: Response, _next: NextFunction) => {
-		console.error('❌	Error: ' + error.message);
+		console.error('🔴 Error: ' + error.message);
 		res.status(error.status || 500).send({
 			success: false,
 			message: error.message || 'Internal Server Error!',
@@ -54,7 +54,7 @@ const startServer = async () => {
 	await connectDB();
 
 	app.listen(port, () => {
-		console.log('🏃	Server is Running on Port: ', port);
+		console.log('🟢 Server is Running on Port: ', port);
 	});
 };
 
