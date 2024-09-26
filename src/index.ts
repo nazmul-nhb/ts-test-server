@@ -1,6 +1,8 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import path from 'path';
 import dotenv from 'dotenv';
+import favicon from 'serve-favicon';
 import { connectDB } from './configs/db';
 import { IErrorObject } from './types/interfaces';
 import exampleRoutes from './routes/exampleRoutes';
@@ -9,6 +11,9 @@ dotenv.config();
 
 const app: Application = express();
 const port = process.env.PORT || 4242;
+
+// Serve favicon using serve-favicon middleware
+app.use(favicon(path.join(__dirname, '../public', 'favicon.svg')));
 
 // Middlewares
 // TODO: Add CORS Options when project is done!

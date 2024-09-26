@@ -39,6 +39,6 @@ export const connectDB = async () => {
 			console.error('⚠️	Unknown Error Occurred!');
 		}
 		console.warn('⚠️	MongoDB is Not Connected!');
-		process.exit(1);
+		// process.exit(1);
 	}
 };
