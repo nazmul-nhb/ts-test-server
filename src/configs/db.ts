@@ -25,7 +25,7 @@ export const connectDB = async () => {
 
 		// Listen for connection errors
 		mongoose.connection.on('error', (err) => {
-			console.error('💣 MongoDB Connection Error: ', err.message);
+			console.error('🛑 MongoDB Connection Error: ', err.message);
 		});
 
 		// Optional: Listen for disconnection
