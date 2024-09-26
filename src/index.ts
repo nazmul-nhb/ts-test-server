@@ -5,13 +5,18 @@ import dotenv from 'dotenv';
 import { connectDB } from './configs/db';
 import { IErrorObject } from './types/interfaces';
 import exampleRoutes from './routes/exampleRoutes';
+import serveFavicon from 'serve-favicon';
 
 dotenv.config();
 
 const app: Application = express();
 const port = process.env.PORT || 4242;
 
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve the favicon
+app.use(serveFavicon(path.join(__dirname, '../public', 'favicon.svg')));
 
 // Middlewares
 // TODO: Add CORS Options when project is done!
@@ -24,7 +29,7 @@ app.get('/', (_req: Request, res: Response) => {
 });
 
 app.get('/favicon.ico', (_req: Request, res: Response) => {
-	res.redirect('/favicon.svg');
+	res.sendFile(path.join(__dirname, '../public', 'favicon.svg'));
 });
 
 // Actual Routes
@@ -48,16 +53,16 @@ app.use(
 	},
 );
 
+// Connect to DB and Start the Server
 const runServer = async () => {
-	// Connect to DB
 	await connectDB();
 
-	// Start the Server
 	app.listen(port, async () => {
 		console.log('🏃	Server is Running on Port: ', port);
 	});
 };
 
+// Call runServer
 runServer().catch(console.dir);
 
 export default app;
