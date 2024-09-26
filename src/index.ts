@@ -12,11 +12,11 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT || 4242;
 
+// Serve the favicon
+app.use(serveFavicon(path.join(__dirname, '../public', 'favicon.ico')));
+
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, '../public')));
-
-// Serve the favicon
-app.use(serveFavicon(path.join(__dirname, '../public', 'favicon.svg')));
 
 // Middlewares
 // TODO: Add CORS Options when project is done!
@@ -26,10 +26,6 @@ app.use(express.json());
 // Routes
 app.get('/', (_req: Request, res: Response) => {
 	res.status(200).send({ success: true, message: '🏃 Server is Running!' });
-});
-
-app.get('/favicon.ico', (_req: Request, res: Response) => {
-	res.sendFile(path.join(__dirname, '../public', 'favicon.svg'));
 });
 
 // Actual Routes
