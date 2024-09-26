@@ -10,9 +10,6 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT || 4242;
 
-// Connect to DB
-connectDB();
-
 // Middlewares
 // TODO: Add CORS Options when project is done!
 app.use(cors());
@@ -44,9 +41,16 @@ app.use(
 	},
 );
 
-// Start the Server
-app.listen(port, async () => {
-	console.log('🏃	Server is Running on Port: ', port);
-});
+const runServer = async () => {
+	// Connect to DB
+	await connectDB();
+
+	// Start the Server
+	app.listen(port, async () => {
+		console.log('🏃	Server is Running on Port: ', port);
+	});
+};
+
+runServer().catch(console.dir);
 
 export default app;
