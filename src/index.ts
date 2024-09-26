@@ -50,15 +50,15 @@ app.use(
 );
 
 // Connect to DB and Start the Server
-const runServer = async () => {
+const startServer = async () => {
 	await connectDB();
 
-	app.listen(port, async () => {
+	app.listen(port, () => {
 		console.log('🏃	Server is Running on Port: ', port);
 	});
 };
 
-// Call runServer
-runServer().catch(console.dir);
+// Call startServer
+startServer().catch(console.dir);
 
 export default app;
